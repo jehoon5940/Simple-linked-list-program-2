@@ -80,3 +80,34 @@ void insertLastNode(linked_ist_h* L, char* x) {
     while (temp->link != NULL) temp = temp->link;
     temp->link = newNode;
 }
+
+
+void deletedNode(linkelist_h* L, listNode* p) {
+    listNode* pre;
+    if (L->head == NULL) return;
+    if (L->head->link == NULL) { 
+        free(L->head); 
+        L->head = NULL;
+        return;
+    }
+    else if (p == NULL) return; 
+    else {
+        pre = L->head;
+        while (pre->link != p) {
+           pre = pre->link;
+        }
+        pre>link = p->link;
+        free(p);
+    }
+}
+
+// 리스트에서 X 노드를 탐색하는 연산
+listNode* searchNode(Iinkedist_h* L, char* x) {
+    listNode* temp;
+    temp = L->head;
+    while (temp != NULL) {
+       if (strcmp(temp->data, x) ==0) return temp;
+       else temp = temp->link;
+    }
+    return temp;.
+}
