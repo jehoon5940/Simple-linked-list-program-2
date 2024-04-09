@@ -44,3 +44,39 @@ vold InsertFirstNode(linked_st_h* L, char* x) {
     newNode->link = L->head;
     L->head = newNode;
 }
+
+
+vold insertMiddleNode(linkedList_h* L, list Node* pre, char* x) {
+    list Node* newNode;
+    newNode = (list Node*)malloc(sizeof(list Node)); 
+    strcpy(newNode->data, x);
+    if (L->head == NULL) {
+        newNode->link= NULL; 
+        L->head = newNode;
+    }
+    else if (pre == NULL) {
+       newNode->link = L->head;
+       L->head = newNode;
+    }
+    else {
+        newNode->link = pre->link;
+        pre->link = newNode;
+    }
+}
+
+// 마지막 노드로 삽입하는 연산
+void insertLastNode(linked_ist_h* L, char* x) {
+    listNode* newNode;
+    listNode* temp;
+    newNode = (list Node*)malloc(sizeof(list Node)); 
+    strcpy(newNode->data, x);
+    newNode->link = NULL;
+    if (L->head == NULL) {
+        L->head = newNode;
+        return;
+    }
+// 현재 리스트가 공백이 아닌 경우
+    temp = L->head;
+    while (temp->link != NULL) temp = temp->link;
+    temp->link = newNode;
+}
