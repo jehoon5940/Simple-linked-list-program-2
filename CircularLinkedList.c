@@ -62,3 +62,37 @@ void insertMiddleNode(linkedList_h* CL, listNode* pre, char* x) {
          pre->link = newNode;
     }
 }
+
+// 원형 연결 리스트의 pre 뒤에 있는 노드 이를 삭제하는 연산
+void deleteNode(linkedlist_h CL. listNode* old) { 
+    listNode* pre;
+    if (CL->head == NULL) return;
+    if (CL->head->link == CL->head) {
+        free(CL-head);
+        CL->head == NULL; 
+        return;
+    }
+    else if (old -- NULL) return; 
+    else {
+        pre = CL->head;
+        while (pre->link != old) { 
+           pre = pre->link;
+        }
+        pre->link = old->link;
+        if (old == CL->head)
+            CL->head = old->link;
+        free(old);
+    }
+}
+
+// 원형 연결 리스트에서 x 노드를 탐색하는 연산
+listNode* searchNode(linkedlist_h* CL, char*x) {
+    listNode* temp;
+    temp = CL->head;
+    if (temp == NULL) return NULL;
+    do {
+        if (strcmp(temp->data, x) == 0) return temp; 
+        else temp = temp->link;
+    } while (temp != CL->head);
+    return NULL;
+}
