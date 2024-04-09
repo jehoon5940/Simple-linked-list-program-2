@@ -109,5 +109,26 @@ listNode* searchNode(Iinkedist_h* L, char* x) {
        if (strcmp(temp->data, x) ==0) return temp;
        else temp = temp->link;
     }
-    return temp;.
+    return temp;
+}
+
+
+void reverse(linkedList_h* L) {
+    listNode* p;
+    listNodex q;
+    listNode* r;
+
+    p = L->head;
+    q = NULL;
+    r = NULL;
+
+// 리스트의 첫 번째 노드부터 링크를 따라 다음 노드로 이동하면서
+// 노드 간의 연결을 바꿈
+    while (p != NULL) {
+        r = q;
+        q = p;
+        p = p->link;
+        q->link = r;
+     }
+     L->head = q;
 }
